@@ -3,6 +3,7 @@ import React from "react";
 import cover from "../../../public/455df9bf1de508f13a412df303e54b6f181f21be-min.jpg";
 import shade from "../../../public/Frame 2147223264 (2).svg";
 import direction from "../../../public/Button Icon.svg";
+import direction90 from "../../../public/Button Icon (1).svg";
 import img1 from "../../../public/icons/budget_7909268 1.svg";
 import img2 from "../../../public/icons/customer-review_11655794 1.svg";
 import img3 from "../../../public/icons/interior-design_12943067 1.svg";
@@ -94,7 +95,7 @@ const WorkCycle = () => {
             satisfaction and the best client experience when designing their
             home interiors.
           </p>
-          <div className="grid grid-cols-3 gap-y-5 py-10">
+          <div className="hidden md:grid grid-cols-3 gap-y-5 py-10">
             {processSteps.map((step, index) => (
               <div key={index} className="flex">
                 <div className="relative bg-white p-5 rounded-[20px] md:space-y-3  shadow-md">
@@ -131,6 +132,41 @@ const WorkCycle = () => {
                     className={`${
                       index === 3 || index === 4 ? "rotate-180" : ""
                     }`}
+                  />
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="grid grid-cols-1  md:hidden py-5">
+            {processSteps.map((step, index) => (
+              <div key={index} className=" flex flex-col items-center">
+                <div className="  p-5 rounded-[20px] shadow-md space-y-3 bg-white">
+                  {/* Icon and Title */}
+                  <div className="flex gap-2 items-center">
+                    <Image
+                      src={step.image}
+                      alt="icon"
+                      className="w-[40px] h-auto object-contain"
+                    />
+                    <h3 className="text-[18px] leading-[120%] font-poppins tracking-tight font-normal uppercase">
+                      <span className="text-black">
+                        {step.title.split(" ").slice(0, -1).join(" ")}
+                      </span>{" "}
+                      <span className="text-[#ED1846]">
+                        {step.title.split(" ").slice(-1)}
+                      </span>
+                    </h3>
+                  </div>
+
+                  <p className="text-black text-[14px] leading-[156%]">
+                    {step.description}
+                  </p>
+                </div>
+                {index !== processSteps.length - 1 && (
+                  <Image
+                    src={direction90}
+                    alt="direction"
+                    className=" w-[30px] h-auto "
                   />
                 )}
               </div>
