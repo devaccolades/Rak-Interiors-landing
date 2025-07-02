@@ -3,6 +3,10 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-[#181818] text-white;
 }
