@@ -14,7 +14,7 @@ const Testimonials = () => {
         <Image
           src={cover}
           alt="cover"
-          className="w-full h-[250px] md:h-[400px] lg:h-[500px] xl:h-[700px] 2xl:h-[1200px] object-top object-cover"
+          className="w-full h-[250px] md:h-[400px] lg:h-[500px] xl:h-[700px] 2xl:h-[1000px] object-top object-cover"
         />
         <Image
           src={shade}
@@ -22,7 +22,7 @@ const Testimonials = () => {
           className="absolute -bottom-1 w-full"
         />
       </section>
-      <section className="">
+      <section className="pb-[20px]">
         <h3 className="text-[14px] font-poppins font-normal text-center text-black -mt-3 py-4">
           <span className="text-[#ED1846]">#Happy</span> Clients
         </h3>
