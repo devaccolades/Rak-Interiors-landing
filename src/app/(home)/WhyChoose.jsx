@@ -87,6 +87,16 @@ const WhyChoose = () => {
                 +91 7511167999
               </p>
             </div>
+            <div className="text-white font-poppins font-medium md:text-[16px] xl:text-[20px]">
+              <p>
+                Find us in :{" "}
+                <span className="text-[#ED1846] font-medium">
+                  Kochi <span className="text-white">|</span> Calicut{" "}
+                  <span className="text-white">|</span> Trivandrum{" "}
+                  <span className="text-white">|</span> Bangalore
+                </span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
