@@ -2,16 +2,83 @@
 import React, { useState } from "react";
 
 const HeroSection = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-  });
+  const [formData, setFormData] = useState({ name: "", phone: "" });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (field, value) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+    if (field === "name") {
+      if (/^[a-zA-Z\s]*$/.test(value)) {
+        setFormData((prev) => ({ ...prev, [field]: value }));
+        setErrors((prev) => ({ ...prev, name: "" }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          name: "Only alphabets are allowed in name.",
+        }));
+      }
+    }
+
+    if (field === "phone") {
+      // Strip all whitespace
+      const sanitizedValue = value.replace(/\s+/g, "");
+
+      // Update the field value freely
+      setFormData((prev) => ({ ...prev, phone: sanitizedValue }));
+
+      // Show error if input is not valid
+      if (!/^\d{10}$/.test(sanitizedValue)) {
+        setErrors((prev) => ({
+          ...prev,
+          phone: "Phone number must be exactly 10 digits.",
+        }));
+      } else {
+        setErrors((prev) => ({ ...prev, phone: "" }));
+      }
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Final validation before submit
+    if (!formData.name || !formData.phone) {
+      setErrors({
+        name: !formData.name ? "Name is required." : errors.name,
+        phone: !formData.phone ? "Phone is required." : errors.phone,
+      });
+      return;
+    }
+
+    try {
+      const response = await fetch("https://abc.com/fporm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("API response error");
+      }
+
+      setSuccessMessage("Form submitted successfully!");
+      setFormData({ name: "", phone: "" });
+
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+    } catch (err) {
+      setErrorMessage("Something went wrong. Please try again.");
+      setSuccessMessage("");
+
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
+    }
   };
 
   return (
@@ -30,7 +97,7 @@ const HeroSection = () => {
           with unmatched style.
         </p>
       </div>
-      <div className="w-full xl:w-[90%] mx-auto bg-[#232323] rounded-[20px] p-[20px] lg:p-[30px] xl:p-[40px] flex flex-col gap-y-4 text-white">
+      <div className="w-full xl:w-[90%] mx-auto bg-[#232323] rounded-[20px] p-[20px] lg:p-[30px] xl:p-[40px] flex flex-col gap-y-2 text-white">
         <h3 className="font-viaoda text-[24px] lg:text-[32px] leading-[120%] tracking-wide">
           Packages start from ₹5.9 Lakhs.
         </h3>
@@ -38,7 +105,7 @@ const HeroSection = () => {
           Ready to begin? Fill out the form and our team will get in touch soon.
         </p>
 
-        <form action="" className="flex flex-col gap-y-4">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-y-4">
           {/* Name Field */}
           <div className="w-full">
             <label
@@ -51,12 +118,14 @@ const HeroSection = () => {
               type="text"
               id="name"
               name="name"
+              placeholder="Enter your name"
               value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              onChange={(e) => handleInputChange("name", e.target.value)}
               className="w-full px-4 py-2 text-white bg-[#181818] border border-gray-500 rounded-md focus:outline-none"
             />
+            {errors.name && (
+              <p className="text-red-400 text-sm mt-1">{errors.name}</p>
+            )}
           </div>
 
           {/* Phone Field */}
@@ -71,21 +140,35 @@ const HeroSection = () => {
               type="text"
               id="phone"
               name="phone"
+              placeholder="Enter your phone number"
               value={formData.phone}
-              onChange={(e) =>
-                setFormData({ ...formData, phone: e.target.value })
-              }
+              onChange={(e) => handleInputChange("phone", e.target.value)}
               className="w-full px-4 py-2 text-white bg-[#181818] border border-gray-500 rounded-md focus:outline-none"
             />
+            {errors.phone && (
+              <p className="text-red-400 text-sm mt-1">{errors.phone}</p>
+            )}
           </div>
 
           {/* Submit Button */}
           <button
             type="submit"
-            className="bg-[#ED1846] font-poppins font-medium text-white text-sm px-6 py-2 rounded-md mt-2 hover:bg-[#c5153a] transition-all"
+            className="bg-[#ED1846] font-poppins font-medium text-white text-sm px-6 py-2 rounded-md  hover:bg-[#c5153a] transition-all cursor-pointer"
           >
             Enquire Now
           </button>
+
+          {/* Success Message */}
+          {successMessage && (
+            <p className="text-green-400 text-sm font-medium mt-2">
+              {successMessage}
+            </p>
+          )}
+          {errorMessage && (
+            <p className="text-red-400 text-sm font-medium mt-2">
+              {errorMessage}
+            </p>
+          )}
         </form>
       </div>
     </section>

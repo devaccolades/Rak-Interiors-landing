@@ -7,25 +7,88 @@ const Footer = () => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    propertyType: "", // Changed from email to propertyType
+    propertyType: "",
   });
+  const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "name") {
+      if (/^[a-zA-Z\s]*$/.test(value)) {
+        setFormData((prev) => ({ ...prev, name: value }));
+        setErrors((prev) => ({ ...prev, name: "" }));
+      } else {
+        setErrors((prev) => ({
+          ...prev,
+          name: "Only alphabets are allowed in name.",
+        }));
+      }
+    } else if (name === "phone") {
+      const sanitizedValue = value.replace(/\s+/g, "");
+      setFormData((prev) => ({ ...prev, phone: sanitizedValue }));
+
+      if (!/^\d{10}$/.test(sanitizedValue)) {
+        setErrors((prev) => ({
+          ...prev,
+          phone: "Phone number must be exactly 10 digits.",
+        }));
+      } else {
+        setErrors((prev) => ({ ...prev, phone: "" }));
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle submission logic here
+
+    // Final validation
+    const newErrors = {};
+    if (!formData.name) newErrors.name = "Name is required.";
+    if (!formData.phone) newErrors.phone = "Phone is required.";
+    if (!formData.propertyType)
+      newErrors.propertyType = "Please select a property type.";
+
+    try {
+      const response = await fetch("https://abc.com/fporm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("API response error");
+      }
+
+      setSuccessMessage("Form submitted successfully!");
+      setFormData({ name: "", phone: "", propertyType: "" });
+      setErrors({});
+      setErrorMessage("");
+
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+    } catch (error) {
+      setErrorMessage("Something went wrong. Please try again.");
+      setSuccessMessage("");
+
+      setTimeout(() => {
+        setErrorMessage("");
+      }, 5000);
+    }
   };
 
   return (
     <main className="bg-[#F2F1EC]">
-      <section className="containers grid grid-cols-1 md:grid-cols-2 justify-between xl:pt-16 pb-5 md:pt-10 pt-7 gap-y-5">
+      <section className="containers flex flex-col-reverse md:grid md:grid-cols-2 justify-between xl:pt-16 pb-10 md:pt-10 pt-7 gap-y-5">
         {/* LEFT SECTION */}
-        <div className="text-black flex flex-col justify-between min-h-[400px] space-y-4">
+        <div className="text-black flex flex-col justify-between space-y-4">
           <div className="space-y-3">
             <Image
               src={logo}
@@ -51,12 +114,15 @@ const Footer = () => {
         </div>
 
         {/* RIGHT SECTION */}
-        <div className="w-full max-w-2xl mx-auto bg-white text-black rounded-[20px] px-6 py-6 md:px-8 md:py-8 flex flex-col gap-y-4">
+        <div className="w-full xl:w-[80%] mx-auto xl:mr-auto bg-white text-black rounded-[20px] px-6 py-6 md:px-8 md:py-8 flex flex-col gap-y-4">
           <h3 className="font-viaoda text-[20px] md:text-[28px] leading-tight tracking-wide">
             Connect With Us
           </h3>
 
-          <form className="flex flex-col gap-y-4 w-full">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col gap-y-4 w-full"
+          >
             {/* Name Field */}
             <div className="w-full">
               <label
@@ -73,6 +139,9 @@ const Footer = () => {
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 text-black bg-white border border-gray-400 rounded-md focus:outline-none"
               />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
             </div>
 
             {/* Phone Field */}
@@ -91,6 +160,9 @@ const Footer = () => {
                 onChange={handleInputChange}
                 className="w-full px-4 py-2 text-black bg-white border border-gray-400 rounded-md focus:outline-none"
               />
+              {errors.phone && (
+                <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+              )}
             </div>
 
             {/* Property Type Select Field */}
@@ -111,8 +183,15 @@ const Footer = () => {
                 <option value="">Select Property Type</option>
                 <option value="Villa">Villa</option>
                 <option value="Apartment">Apartment</option>
-                <option value="Townhouse">Townhouse</option>
+                <option value="Townhouse">Individual Home</option>
+                <option value="Office">Office</option>
+                <option value="Others">Others</option>
               </select>
+              {errors.propertyType && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.propertyType}
+                </p>
+              )}
             </div>
 
             {/* Submit Button */}
@@ -122,6 +201,14 @@ const Footer = () => {
             >
               Request a callback
             </button>
+
+            {/* Messages */}
+            {successMessage && (
+              <p className="text-green-500 text-sm">{successMessage}</p>
+            )}
+            {errorMessage && (
+              <p className="text-red-500 text-sm">{errorMessage}</p>
+            )}
           </form>
         </div>
       </section>
