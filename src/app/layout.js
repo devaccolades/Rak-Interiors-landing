@@ -1,5 +1,8 @@
 import { Viaoda_Libre, Poppins } from "next/font/google";
 import "./globals.css";
+import whatsapp from "../../public/whatsapp_2504957 1.svg";
+import phone from "../../public/square.png";
+import Image from "next/image";
 
 const viaodaLibre = Viaoda_Libre({
   variable: "--font-viaoda-libre",
@@ -25,6 +28,25 @@ export default function RootLayout({ children }) {
         className={`${viaodaLibre.variable} ${poppins.variable} antialiased`}
       >
         {children}
+
+        <a
+          href="https://wa.me/917511167999"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-14 right-10 z-50 "
+          aria-label="Chat on WhatsApp"
+        >
+          <Image src={whatsapp} alt="whatsapp" className="w-[60px] h-auto" />
+        </a>
+        <a
+          href="tel:+917511167999"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-32 right-10 z-50"
+          aria-label="Call Us"
+        >
+          <Image src={phone} alt="phone icon" className="w-[60px] h-auto" />
+        </a>
       </body>
     </html>
   );

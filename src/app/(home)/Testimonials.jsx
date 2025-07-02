@@ -22,40 +22,20 @@ const Testimonials = () => {
           className="absolute -bottom-1 w-full"
         />
       </section>
-      <section className="pb-[20px]">
+      <section className="pb-10 md:pb-[60px]  w-full">
         <h3 className="text-[14px] font-poppins font-normal text-center text-black -mt-3 py-4">
           <span className="text-[#ED1846]">#Happy</span> Clients
         </h3>
-        <div className="bg-white rounded-[40px] p-[10px] w-[800px] h-auto mx-auto">
-          <div className="relative w-full aspect-video overflow-hidden rounded-[30px]">
-            {!isPlaying ? (
-              <button
-                onClick={() => setIsPlaying(true)}
-                className="relative w-full h-full"
-              >
-                <Image
-                  src={thumbnailImg}
-                  alt="Video thumbnail"
-                  className="object-cover w-full h-full"
-                  fill
-                  priority
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-[#ED1846] text-white px-4 py-2 rounded-full text-sm font-poppins">
-                    ▶ Play
-                  </div>
-                </div>
-              </button>
-            ) : (
-              <video
-                controls
-                autoPlay
-                className="w-full h-full object-cover rounded-[30px]"
-                preload="auto"
-                playsInline
-                src="/WhatsApp_Video_2025-06-25_at_11.30.07_AM_1_7FBMQAN.mp4"
-              ></video>
-            )}
+        <div className="bg-white rounded-[30px] md:rounded-[40px] p-[5px] md:p-[10px] w-[95%] md:w-[70%] xl:w-[60%] h-auto mx-auto">
+          <div className="relative w-full aspect-video overflow-hidden rounded-[25px] md:rounded-[30px]">
+            <iframe
+              className="absolute top-0 left-0 w-full h-full rounded-[30px]"
+              src="https://www.youtube.com/embed/KNrU6-EuhTY?rel=0&autoplay=0&modestbranding=1"
+              title="YouTube video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
       </section>
