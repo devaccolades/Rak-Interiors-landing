@@ -86,7 +86,10 @@ const Footer = () => {
 
   return (
     <main className="bg-[#F2F1EC]">
-      <section className="containers flex flex-col-reverse md:grid md:grid-cols-2 justify-between xl:pt-16 pb-10 md:pt-10 pt-7 gap-y-5">
+      <section
+        id="contact"
+        className="containers flex flex-col-reverse md:grid md:grid-cols-2 justify-between xl:pt-16 pb-10 md:pt-10 pt-7 gap-y-5"
+      >
         {/* LEFT SECTION */}
         <div className="text-black flex flex-col justify-between space-y-4">
           <div className="space-y-3">

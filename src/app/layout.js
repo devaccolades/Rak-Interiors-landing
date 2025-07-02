@@ -33,19 +33,27 @@ export default function RootLayout({ children }) {
           href="https://wa.me/917511167999"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-14 right-10 z-50 "
+          className="fixed bottom-14 right-5 md:right-10 z-50 "
           aria-label="Chat on WhatsApp"
         >
-          <Image src={whatsapp} alt="whatsapp" className="w-[60px] h-auto" />
+          <Image
+            src={whatsapp}
+            alt="whatsapp"
+            className="w-[40px] md:w-[60px] h-auto"
+          />
         </a>
         <a
           href="tel:+917511167999"
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-32 right-10 z-50"
+          className="fixed bottom-32 right-5 md:right-10 z-50"
           aria-label="Call Us"
         >
-          <Image src={phone} alt="phone icon" className="w-[60px] h-auto" />
+          <Image
+            src={phone}
+            alt="phone icon"
+            className="w-[40px] md:w-[60px] h-auto"
+          />
         </a>
       </body>
     </html>
