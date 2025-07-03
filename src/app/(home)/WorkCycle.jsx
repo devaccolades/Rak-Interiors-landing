@@ -15,25 +15,25 @@ const processSteps = [
   {
     title: "UNDERSTANDING CLIENT NEEDS",
     description:
-      "Our sales team comprises of patient listeners who will absorb and analyse the client's requirements in detail.",
+      "Our sales team comprises of patient listeners who will absorb and analyse the client's requirements in detail",
     image: img2,
   },
   {
     title: "ROUGH ESTIMATION",
     description:
-      "A rough estimate of the work at hand will be shared with clients for confirmation, post which a booking amount has to be paid.",
+      "A rough estimate of the work at hand will be shared with clients for confirmation, post which a booking amount has to be paid",
     image: img1,
   },
   {
-    title: "FINAL DESIGN & QUOTATION",
+    title: "Design & Quotation",
     description:
-      "After final 3D approval, we share the quotation and take on-site measurements to begin factory production.",
+      "Once the design is finalized, we take precise on-site measurements to begin 3D visualization. After design approval and confirmation, our team revalidates measurements and starts production.",
     image: img3,
   },
   {
     title: "ON SITE WORK",
     description:
-      "Once the products are ready for dispatch, the remaining 50% will be collected from the client and we will deploy workers and supervisors on site.",
+      "Once the products are ready for dispatch, the remaining 50% will be collected from the client and we will deploy workers and supervisors on site",
     image: img6,
   },
   {
