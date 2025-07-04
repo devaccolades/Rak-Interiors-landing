@@ -54,7 +54,7 @@ const Footer = () => {
       newErrors.propertyType = "Please select a property type.";
 
     try {
-      const response = await fetch("https://abc.com/fporm", {
+      const response = await fetch("api/send-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,14 +73,14 @@ const Footer = () => {
 
       setTimeout(() => {
         setSuccessMessage("");
-      }, 5000);
+      }, 2000);
     } catch (error) {
       setErrorMessage("Something went wrong. Please try again.");
       setSuccessMessage("");
 
       setTimeout(() => {
         setErrorMessage("");
-      }, 5000);
+      }, 2000);
     }
   };
 
