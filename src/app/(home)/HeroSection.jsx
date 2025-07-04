@@ -52,7 +52,7 @@ const HeroSection = () => {
     }
 
     try {
-      const response = await fetch("https://abc.com/fporm", {
+      const response = await fetch("/api/send-mail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,24 +60,25 @@ const HeroSection = () => {
         body: JSON.stringify(formData),
       });
 
-      if (!response.ok) {
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
         throw new Error("API response error");
       }
 
       setSuccessMessage("Form submitted successfully!");
       setFormData({ name: "", phone: "" });
 
-      // Hide success message after 5 seconds
       setTimeout(() => {
         setSuccessMessage("");
-      }, 5000);
+      }, 2000);
     } catch (err) {
       setErrorMessage("Something went wrong. Please try again.");
       setSuccessMessage("");
 
       setTimeout(() => {
         setErrorMessage("");
-      }, 5000);
+      }, 2000);
     }
   };
 
