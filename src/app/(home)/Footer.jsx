@@ -73,14 +73,14 @@ const Footer = () => {
 
       setTimeout(() => {
         setSuccessMessage("");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       setErrorMessage("Something went wrong. Please try again.");
       setSuccessMessage("");
 
       setTimeout(() => {
         setErrorMessage("");
-      }, 2000);
+      }, 1000);
     }
   };
 

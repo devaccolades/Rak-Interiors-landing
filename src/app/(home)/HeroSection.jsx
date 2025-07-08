@@ -71,14 +71,14 @@ const HeroSection = () => {
 
       setTimeout(() => {
         setSuccessMessage("");
-      }, 2000);
+      }, 1000);
     } catch (err) {
       setErrorMessage("Something went wrong. Please try again.");
       setSuccessMessage("");
 
       setTimeout(() => {
         setErrorMessage("");
-      }, 2000);
+      }, 1000);
     }
   };
 
