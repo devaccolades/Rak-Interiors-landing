@@ -15,37 +15,37 @@ const processSteps = [
   {
     title: "UNDERSTANDING CLIENT NEEDS",
     description:
-      "Our sales team comprises of patient listeners who will absorb and analyse the client's requirements in detail",
+      "Our sales team consists of attentive professionals who carefully listen to and analyze each client's specific requirements to ensure a tailored solution.",
     image: img2,
   },
   {
     title: "ROUGH ESTIMATION",
     description:
-      "A rough estimate of the work at hand will be shared with clients for confirmation, post which a booking amount has to be paid",
+      "A rough estimate of the proposed work is shared for the client’s review. Upon confirmation, a booking amount is collected to initiate the next steps.",
     image: img1,
   },
   {
     title: "Design & Quotation",
     description:
-      "Once the design is finalized, we take precise on-site measurements to begin 3D visualization. After design approval and confirmation, our team revalidates measurements and starts production.",
+      "Once the design is finalized, our team takes precise measurements and creates a detailed 3D visualization. After approval, the final quotation is shared, and upon confirmation, site details are revalidated to begin production at our factory.",
     image: img3,
   },
   {
     title: "ON SITE WORK",
     description:
-      "Once the products are ready for dispatch, the remaining 50% will be collected from the client and we will deploy workers and supervisors on site",
+      "Once the products are ready, we collect the remaining 50% payment and deploy our skilled team and supervisors to begin on-site implementation.",
     image: img6,
   },
   {
     title: "KEY HANDOVER",
     description:
-      "Within the committed timeline, our team will hand over the home to our valuable clients - a home where every element speaks of perfection.",
+      "Within 45 working days, we hand over a fully completed home, crafted with care and precision, where every detail reflects perfection.",
     image: img4,
   },
   {
     title: "LIFE TIME SERVICE",
     description:
-      "We never leave you after completing the work. We provide lifetime service along with two complementary services.",
+      "Our relationship doesn't end with project completion. We offer lifetime service support along with two complimentary services in the first year.",
     image: img5,
   },
 ];
