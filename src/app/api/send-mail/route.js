@@ -35,7 +35,7 @@ export async function POST(req) {
     await transporter.sendMail({
       from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
       to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
-      subject: "RAK Landing Page – Lead Notification",
+      subject: "Rak Bangalore Google Leads",
       html: emailHtml,
     });
 
