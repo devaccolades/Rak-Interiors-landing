@@ -35,9 +35,16 @@ export async function POST(req) {
     await transporter.sendMail({
       from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
       to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
-      subject: "New Website Form Submission",
+      subject: "RAK Landing Page – Lead Notification",
       html: emailHtml,
     });
+
+    //   await transporter.sendMail({
+    //   from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
+    //   to: ["aswink.accolades@gmail.com"],
+    //   subject: "RAK Landing Page – Lead Notification",
+    //   html: emailHtml,
+    // });
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
