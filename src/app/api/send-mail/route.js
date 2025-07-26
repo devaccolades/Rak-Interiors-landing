@@ -32,10 +32,17 @@ export async function POST(req) {
       </div>
     `;
 
-    await transporter.sendMail({
+    // await transporter.sendMail({
+    //   from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
+    //   to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
+    //   subject: "Rak Bangalore Google Leads",
+    //   html: emailHtml,
+    // });
+
+      await transporter.sendMail({
       from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
-      to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
-      subject: "New Website Form Submission",
+      to: ["aswink.accolades@gmail.com"],
+      subject: "RAK Landing Page – Lead Notification",
       html: emailHtml,
     });
 

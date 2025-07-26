@@ -52,6 +52,11 @@ const Footer = () => {
     if (!formData.phone) newErrors.phone = "Phone is required.";
     if (!formData.propertyType)
       newErrors.propertyType = "Please select a property type.";
+    
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     try {
       const response = await fetch("api/send-mail", {

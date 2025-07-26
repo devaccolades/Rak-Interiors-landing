@@ -13,8 +13,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <Premium />
-      <WorkCycle />
       <Testimonials />
+      <WorkCycle />
       <WhyChoose />
       <Footer />
     </>
