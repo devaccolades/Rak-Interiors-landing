@@ -55,7 +55,7 @@ const Footer = () => {
     
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      return; // 🔴 Don't proceed to submit
+      return;
     }
 
     try {

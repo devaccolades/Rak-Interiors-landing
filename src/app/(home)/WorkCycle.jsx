@@ -140,7 +140,7 @@ const WorkCycle = () => {
           <div className="grid grid-cols-1  md:hidden py-5">
             {processSteps.map((step, index) => (
               <div key={index} className=" flex flex-col items-center">
-                <div className="  p-5 rounded-[20px] shadow-md space-y-3 bg-white">
+                <div className="  p-5 rounded-[20px] shadow-md space-y-3 bg-white w-full ">
                   {/* Icon and Title */}
                   <div className="flex gap-2 items-center">
                     <Image
@@ -158,9 +158,9 @@ const WorkCycle = () => {
                     </h3>
                   </div>
 
-                  <p className="text-black text-[14px] leading-[156%]">
+                  {/* <p className="text-black text-[14px] leading-[156%] hidden">
                     {step.description}
-                  </p>
+                  </p> */}
                 </div>
                 {index !== processSteps.length - 1 && (
                   <Image
