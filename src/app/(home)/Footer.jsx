@@ -114,11 +114,12 @@ const Footer = () => {
             </div>
           </div>
           {/* Moved to bottom */}
-          <p className="text-[12px] font-poppins mt-4">
+          {/* <p className="text-[12px] font-poppins mt-4">
             Copyright © 2025{" "}
             <span className="text-[#ED1846] font-medium">RAK Interiors</span>{" "}
             All Rights Reserved
           </p>
+           */}
         </div>
 
         {/* RIGHT SECTION */}
@@ -219,7 +220,33 @@ const Footer = () => {
             )}
           </form>
         </div>
+        
       </section>
+     <div className="bg-[#EDECE8] w-full border-t border-gray-300 py-3 mt-4">
+  <div className="container mx-auto px-4 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-6 text-center text-[12px] font-poppins text-gray-700">
+    <p>
+      © 2025 <span className="text-[#ED1846] font-medium">RAK Interiors</span>. All Rights Reserved.
+    </p>
+    <p className="flex items-center gap-2">
+      Powered by
+      <a
+        href="https://accoladesintegrated.com"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-1 text-[#ED1846] font-medium hover:underline"
+      >
+        Accolades Integrated
+        <Image
+          src="/logo/acc_logo.svg"
+          alt="Company Logo"
+          width={20}
+          height={20}
+          className="h-auto object-contain  w-[20px]"
+        />
+      </a>
+    </p>
+  </div>
+</div>
     </main>
   );
 };
