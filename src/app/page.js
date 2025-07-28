@@ -10,8 +10,13 @@ import Footer from "./(home)/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <HeroSection />
+        <div
+      className="bg-cover bg-center bg-no-repeat h-[100vh] bg-gradient-responsive"
+      // No inline style needed anymore as the class handles it
+    >
+          <Navbar />
+          <HeroSection />
+      </div>
       <Premium />
       <Testimonials />
       <WorkCycle />

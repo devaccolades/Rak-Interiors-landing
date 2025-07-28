@@ -1,13 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import cover from "../../../public/b65609186001bca5f91c23472a1de2b9a95b2584-min.jpg";
 import shade from "../../../public/Frame 2147223264 (2).svg";
 import thumbnailImg from "../../../public/5b9d505582939dacf7dee937c4b9a3fadf84dcff-min.png";
 
 const Testimonials = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
-
   return (
     <main className="bg-[#F2F1EC]">
       <section className="relative">
@@ -22,20 +20,37 @@ const Testimonials = () => {
           className="absolute -bottom-1 w-full"
         />
       </section>
-      <section className="pb-10 md:pb-[60px]  w-full">
-        <h3 className="text-[14px] font-poppins font-normal text-center text-black -mt-3 py-4">
-          <span className="text-[#ED1846]">#Happy</span> Clients
-        </h3>
-        <div className="bg-white rounded-[30px] md:rounded-[40px] p-[5px] md:p-[10px] w-[95%] md:w-[70%] xl:w-[60%] h-auto mx-auto">
-          <div className="relative w-full aspect-video overflow-hidden rounded-[25px] md:rounded-[30px]">
-            <iframe
-              className="absolute top-0 left-0 w-full h-full rounded-[30px]"
-              src="https://www.youtube.com/embed/KNrU6-EuhTY?rel=0&autoplay=0&modestbranding=1"
-              title="YouTube video"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+
+      <section className="pb-10 md:pb-[60px] w-[80%] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-12 px-4 md:px-10 xl:px-20">
+          {/* Left: Video */}
+          <div className="w-full md:w-1/4">
+            <div className="relative w-full overflow-hidden rounded-[30px] md:rounded-[40px] flex justify-center">
+              <video
+                controls
+                playsInline
+                className="w-auto max-w-full max-h-[500px] object-contain rounded-[30px] md:rounded-[40px] mx-auto border-[3px] border-white"
+                poster="/thmbnail.jpeg"
+              >
+                <source src="/testimonial.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+          {/* Right: Text */}
+          <div className="w-full md:w-3/4">
+            <h3 className="text-[14px] font-poppins font-normal text-left text-black">
+              <span className="text-[#ED1846]">#Happy</span> Clients
+            </h3>
+            <h4 className="mt-4 text-xl md:text-2xl font-viaoda font-semibold leading-relaxed text-gray-700">
+              Trusted by Homeowners Across               <span className="text-[#ED1846]">SOUTH INDIA</span>
+            </h4>
+            <p className="mt-4 text-sm md:text-base leading-relaxed text-gray-700 w-[60%]">
+              From concept to completion, our clients count on us for quality, transparency, and timely delivery. Hear directly from those who made their dream spaces a reality.
+            </p>
+            {/* Add more text or a CTA button here */}
           </div>
         </div>
       </section>
