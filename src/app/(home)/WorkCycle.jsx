@@ -142,11 +142,11 @@ const WorkCycle = () => {
               <div key={index} className=" flex flex-col items-center">
                 <div className="  p-5 rounded-[20px] shadow-md space-y-3 bg-white w-full ">
                   {/* Icon and Title */}
-                  <div className="flex gap-2 items-center">
+                  <div className="flex gap-2 items-center justify-center align-center">
                     <Image
                       src={step.image}
                       alt="icon"
-                      className="w-[40px] h-auto object-contain"
+                      className="w-[38px] h-auto object-contain"
                     />
                     <h3 className="text-[18px] leading-[120%] font-poppins tracking-tight font-normal uppercase">
                       <span className="text-black">
