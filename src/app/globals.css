@@ -21,6 +21,27 @@ body {
   }
 }
 
+.bg-gradient-responsive {
+  background-image: linear-gradient(
+      270deg, /* Default for larger screens */
+      rgba(0, 0, 0, 0) 35%,
+      rgba(0, 0, 0, 0.9) 100%
+    ),
+    url('/rak.webp');
+}
+
+
+@media (max-width: 767px) {
+  .bg-gradient-responsive {
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0) 35%,
+        rgba(0, 0, 0, 0.9) 100%
+      ),
+      url('/rak.webp');
+  }
+}
+
 .font-viaoda {
   font-family: var(--font-viaoda-libre);
 }
