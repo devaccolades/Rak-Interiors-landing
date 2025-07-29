@@ -32,20 +32,19 @@ export async function POST(req) {
       </div>
     `;
 
-    await transporter.sendMail({
-      from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
-      to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
-      subject: `Rak Bangalore Google Leads - ${name || "New Lead"} - ${new Date().toLocaleString()}`,
-
-      html: emailHtml,
-    });
-
-    //   await transporter.sendMail({
+    // await transporter.sendMail({
     //   from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
-    //   to: ["aswink.accolades@gmail.com"],
-    //   subject: `Rak Bangalore Google Leads - ${name || "New Lead"} - ${new Date().toLocaleString()}`,
+    //   to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
+    //   subject: "Rak Bangalore Google Leads",
     //   html: emailHtml,
     // });
+
+      await transporter.sendMail({
+      from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
+      to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
+      subject: "RAK Landing Page – Lead Notification",
+      html: emailHtml,
+    });
 
     return new Response(JSON.stringify({ success: true }), { status: 200 });
   } catch (error) {
