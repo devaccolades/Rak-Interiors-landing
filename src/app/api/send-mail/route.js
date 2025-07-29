@@ -21,11 +21,10 @@ export async function POST(req) {
           <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
           ${name ? `<p><strong>Name:</strong> ${name}</p>` : ""}
           ${phone ? `<p><strong>Phone:</strong> ${phone}</p>` : ""}
-          ${
-            propertyType
-              ? `<p><strong>Property Type:</strong> ${propertyType}</p>`
-              : ""
-          }
+          ${propertyType
+        ? `<p><strong>Property Type:</strong> ${propertyType}</p>`
+        : ""
+      }
           <hr style="margin: 20px 0; border: none; border-top: 1px solid #eee;" />
           <p style="font-size: 14px; color: #888;">This email was generated from a form submission on your website.</p>
         </div>
@@ -39,10 +38,10 @@ export async function POST(req) {
     //   html: emailHtml,
     // });
 
-      await transporter.sendMail({
+    await transporter.sendMail({
       from: `"Google Ad Form" <${process.env.EMAIL_USER}>`,
       to: ["leadsaccolades@gmail.com", "rakbangloread@gmail.com"],
-      subject: "RAK Landing Page – Lead Notification",
+      subject: `Rak Bangalore Google Leads - ${name || "New Lead"} - ${new Date().toLocaleString()}`,
       html: emailHtml,
     });
 
